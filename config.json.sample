@@ -1,0 +1,9 @@
+{
+	"dsn": "username:password@tcp(10.10.10.130:3306)/instanto",
+	"port": 3000,
+	"media_dir": "/tmp",
+	"serve_web_apps": true,
+	"web_app_admin_dir": "../instanto-admin",
+	"web_app_public_dir": "../instanto-public",
+	"access_control_allow_origin": "*"
+}
