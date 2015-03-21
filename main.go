@@ -84,6 +84,11 @@ func registerAdminApp(router *mux.Router, config *Config) {
 
 func registerCoreAPIs(router *mux.Router, config *Config) {
 
+	// INSTALLATION
+	router.HandleFunc("/api/install", func(w http.ResponseWriter, r *http.Request) {
+		createSchema()
+	})
+
 	router.PathPrefix("/api/media/").Handler(http.StripPrefix("/api/media/", http.FileServer(http.Dir(config.MediaDir))))
 
 	// Login
