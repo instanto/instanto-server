@@ -58,7 +58,6 @@ func main() {
 		LogError(err)
 		os.Exit(1)
 	}
-	LogInfo(dbProvider)
 	router := mux.NewRouter().StrictSlash(true)
 	registerCoreAPIs(router, config)
 	if config.ServeWebApps == true {
@@ -76,11 +75,11 @@ func main() {
 }
 
 func registerPublicApp(router *mux.Router, config *Config) {
-	router.PathPrefix("/instanto-public/").Handler(http.StripPrefix("/instanto-public/", http.FileServer(http.Dir(config.WebAppPublicDir))))
+	router.PathPrefix(config.WebAppPublicURL).Handler(http.StripPrefix(config.WebAppPublicURL, http.FileServer(http.Dir(config.WebAppPublicDir))))
 }
 
 func registerAdminApp(router *mux.Router, config *Config) {
-	router.PathPrefix("/instanto-admin/").Handler(http.StripPrefix("/instanto-admin/", http.FileServer(http.Dir(config.WebAppAdminDir))))
+	router.PathPrefix(config.WebAppAdminURL).Handler(http.StripPrefix(config.WebAppAdminURL, http.FileServer(http.Dir(config.WebAppAdminDir))))
 }
 
 func registerCoreAPIs(router *mux.Router, config *Config) {

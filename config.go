@@ -7,14 +7,18 @@ import (
 )
 
 type Config struct {
-	Installed bool   `json:"installed"`
-	Port      int    `json:"port"`
-	MediaDir  string `json:"media_dir"`
-	Secret    string `json:"secret"`
+	Installed bool `json:"installed"`
+	Port      int  `json:"port"`
+
+	MediaDir string `json:"media_dir"`
+
+	Secret string `json:"secret"`
 
 	ServeWebApps             bool   `json:"serve_web_apps"`
 	WebAppAdminDir           string `json:"web_app_admin_dir"`
+	WebAppAdminURL           string `json:"web_app_admin_url"`
 	WebAppPublicDir          string `json:"web_app_public_dir"`
+	WebAppPublicURL          string `json:"web_app_public_url"`
 	AccessControlAllowOrigin string `json:"access_control_allow_origin"`
 
 	DSN string `json:""`
