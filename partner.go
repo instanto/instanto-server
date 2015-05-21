@@ -22,7 +22,7 @@ type PartnerParams struct {
 
 func Partners2JSON(partners []*lib.Partner) (partnersJSON []byte, err error) {
 	data := make(map[string]interface{})
-	data["partners"] = partners
+	data["partner_collection"] = partners
 	partnersJSON, err = json.Marshal(data)
 	if err != nil {
 		LogError(err)

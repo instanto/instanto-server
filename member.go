@@ -26,7 +26,7 @@ type MemberParams struct {
 
 func Members2JSON(members []*lib.Member) (membersJSON []byte, err error) {
 	data := make(map[string]interface{})
-	data["members"] = members
+	data["member_collection"] = members
 	membersJSON, err = json.Marshal(data)
 	if err != nil {
 		LogError(err)

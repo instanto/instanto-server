@@ -19,7 +19,7 @@ type FundingBodyParams struct {
 
 func FundingBodies2JSON(fundingBodies []*lib.FundingBody) (fundingBodiesJSON []byte, err error) {
 	data := make(map[string]interface{})
-	data["funding_bodies"] = fundingBodies
+	data["fundingbody_collection"] = fundingBodies
 	fundingBodiesJSON, err = json.Marshal(data)
 	if err != nil {
 		LogError(err)
@@ -323,6 +323,7 @@ func FundingBodyAddSecondaryFinancedProject(w http.ResponseWriter, r *http.Reque
 		w.Write(verrJSON)
 		return
 	}
+	w.WriteHeader(201)
 	return
 }
 func FundingBodyRemoveSecondaryFinancedProject(w http.ResponseWriter, r *http.Request) {
@@ -361,5 +362,6 @@ func FundingBodyRemoveSecondaryFinancedProject(w http.ResponseWriter, r *http.Re
 		w.WriteHeader(404)
 		return
 	}
+	w.WriteHeader(204)
 	return
 }

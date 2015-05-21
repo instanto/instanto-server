@@ -22,7 +22,7 @@ type FinancedProjectParams struct {
 
 func FinancedProjects2JSON(financedProjects []*lib.FinancedProject) (financedProjectsJSON []byte, err error) {
 	data := make(map[string]interface{})
-	data["financed_projects"] = financedProjects
+	data["financedproject_collection"] = financedProjects
 	financedProjectsJSON, err = json.Marshal(data)
 	if err != nil {
 		LogError(err)

@@ -20,7 +20,7 @@ type NewspaperParams struct {
 
 func Newspapers2JSON(newspapers []*lib.Newspaper) (newspapersJSON []byte, err error) {
 	data := make(map[string]interface{})
-	data["newspapers"] = newspapers
+	data["newspaper_collection"] = newspapers
 	newspapersJSON, err = json.Marshal(data)
 	if err != nil {
 		LogError(err)

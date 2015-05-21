@@ -18,7 +18,7 @@ type StatusParams struct {
 
 func Statuses2JSON(statuses []*lib.Status) (statusesJSON []byte, err error) {
 	data := make(map[string]interface{})
-	data["statuses"] = statuses
+	data["status_collection"] = statuses
 	statusesJSON, err = json.Marshal(data)
 	if err != nil {
 		LogError(err)

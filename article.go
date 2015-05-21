@@ -18,7 +18,7 @@ type ArticleParams struct {
 
 func Articles2JSON(articles []*lib.Article) (articlesJSON []byte, err error) {
 	data := make(map[string]interface{})
-	data["articles"] = articles
+	data["article_collection"] = articles
 	articlesJSON, err = json.Marshal(data)
 	if err != nil {
 		LogError(err)
