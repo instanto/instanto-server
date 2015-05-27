@@ -28,7 +28,7 @@ func Login(w http.ResponseWriter, r *http.Request) {
 		w.WriteHeader(415)
 		return
 	}
-	verr, err := dbProvider.UserCheckLogin(LoginParams.Username, LoginParams.Password)
+	user, verr, err := dbProvider.UserCheckLogin(LoginParams.Username, LoginParams.Password)
 	if err != nil {
 		LogError(err)
 		w.WriteHeader(500)
@@ -47,7 +47,9 @@ func Login(w http.ResponseWriter, r *http.Request) {
 	}
 	// Create token
 	token := jwt.New(jwt.GetSigningMethod("HS256"))
-	token.Claims["iss"] = LoginParams.Username
+	token.Claims["iss"] = "Instanto"
+	token.Claims["username"] = user.Username
+	token.Claims["email"] = user.Email
 	token.Claims["exp"] = time.Now().Add(time.Minute * 480).Unix()
 	token.Claims["permissions"] = []string{"status_list", "status_add", "status_update", "status_delete"}
 	tokenString, err := token.SignedString([]byte(config.Secret))
@@ -81,7 +83,7 @@ func AuthenticateUser(r *http.Request) (username string, ok bool) {
 	if err != nil {
 		return
 	}
-	username = token.Claims["iss"].(string)
+	username = token.Claims["username"].(string)
 	ok = true
 	return
 }

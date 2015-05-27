@@ -303,6 +303,7 @@ func PartnerAddMember(w http.ResponseWriter, r *http.Request) {
 		w.Write(verrJSON)
 		return
 	}
+	w.WriteHeader(201)
 	return
 }
 func PartnerRemoveMember(w http.ResponseWriter, r *http.Request) {
@@ -341,6 +342,7 @@ func PartnerRemoveMember(w http.ResponseWriter, r *http.Request) {
 		w.WriteHeader(404)
 		return
 	}
+	w.WriteHeader(204)
 	return
 }
 func PartnerGetResearchLines(w http.ResponseWriter, r *http.Request) {

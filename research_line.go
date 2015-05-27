@@ -27,7 +27,7 @@ type ResearchLineParams struct {
 
 func ResearchLines2JSON(researchLines []*lib.ResearchLine) (researchLinesJSON []byte, err error) {
 	data := make(map[string]interface{})
-	data["research_lines"] = researchLines
+	data["researchline_collection"] = researchLines
 	researchLinesJSON, err = json.Marshal(data)
 	if err != nil {
 		LogError(err)

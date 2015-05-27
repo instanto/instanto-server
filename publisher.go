@@ -18,7 +18,7 @@ type PublisherParams struct {
 
 func Publishers2JSON(publishers []*lib.Publisher) (publishersJSON []byte, err error) {
 	data := make(map[string]interface{})
-	data["publishers"] = publishers
+	data["publisher_collection"] = publishers
 	publishersJSON, err = json.Marshal(data)
 	if err != nil {
 		LogError(err)
