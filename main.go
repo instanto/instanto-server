@@ -20,12 +20,11 @@ type ServerCORS struct {
 }
 
 func (s *ServerCORS) ServeHTTP(w http.ResponseWriter, r *http.Request) {
-	if s.config.ServeWebApps == false { // this means that the web apps are under apache/nginx and do CORS requests
+	if s.config.CORSEnabled {
 		if origin := r.Header.Get("Origin"); origin != "" {
 			w.Header().Add("Access-Control-Allow-Origin", s.config.AccessControlAllowOrigin)
-			w.Header().Add("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT, DELETE")
-			w.Header().Add("Access-Control-Allow-Headers",
-				"Accept, Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization")
+			w.Header().Add("Access-Control-Allow-Methods", s.config.AccessControlAllowMethods)
+			w.Header().Add("Access-Control-Allow-Headers", s.config.AccessControlAllowHeaders)
 		}
 		// Stop here if it is a Preflighted OPTIONS request
 		if r.Method == "OPTIONS" {
