@@ -19,7 +19,7 @@ type PublicationParams struct {
 
 func Publications2JSON(publications []*lib.Publication) (publicationsJSON []byte, err error) {
 	data := make(map[string]interface{})
-	data["publications"] = publications
+	data["publication_collection"] = publications
 	publicationsJSON, err = json.Marshal(data)
 	if err != nil {
 		LogError(err)

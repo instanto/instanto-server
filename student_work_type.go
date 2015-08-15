@@ -17,7 +17,7 @@ type StudentWorkTypeParams struct {
 
 func StudentWorkTypes2JSON(studentWorkTypes []*lib.StudentWorkType) (studentWorkTypesJSON []byte, err error) {
 	data := make(map[string]interface{})
-	data["student_work_types"] = studentWorkTypes
+	data["studentworktype_collection"] = studentWorkTypes
 	studentWorkTypesJSON, err = json.Marshal(data)
 	if err != nil {
 		LogError(err)

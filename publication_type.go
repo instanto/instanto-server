@@ -17,7 +17,7 @@ type PublicationTypeParams struct {
 
 func PublicationTypes2JSON(publicationTypes []*lib.PublicationType) (publicationTypesJSON []byte, err error) {
 	data := make(map[string]interface{})
-	data["publication_types"] = publicationTypes
+	data["publicationtype_collection"] = publicationTypes
 	publicationTypesJSON, err = json.Marshal(data)
 	if err != nil {
 		LogError(err)
