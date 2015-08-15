@@ -14,12 +14,15 @@ type Config struct {
 
 	Secret string `json:"secret"`
 
-	ServeWebApps             bool   `json:"serve_web_apps"`
-	WebAppAdminDir           string `json:"web_app_admin_dir"`
-	WebAppAdminURL           string `json:"web_app_admin_url"`
-	WebAppPublicDir          string `json:"web_app_public_dir"`
-	WebAppPublicURL          string `json:"web_app_public_url"`
-	AccessControlAllowOrigin string `json:"access_control_allow_origin"`
+	ServeWebApps              bool   `json:"serve_web_apps"`
+	WebAppAdminDir            string `json:"web_app_admin_dir"`
+	WebAppAdminURL            string `json:"web_app_admin_url"`
+	WebAppPublicDir           string `json:"web_app_public_dir"`
+	WebAppPublicURL           string `json:"web_app_public_url"`
+	CORSEnabled               bool   `json:"cors_enabled"`
+	AccessControlAllowOrigin  string `json:"access_control_allow_origin"`
+	AccessControlAllowMethods string `json:"access_control_allow_methods"`
+	AccessControlAllowHeaders string `json:"access_control_allow_headers"`
 
 	DSN string `json:""`
 }
